@@ -75,6 +75,10 @@ public abstract class AbstractRegistry implements Registry {
     // Local disk cache file
     private File file;
 
+    /**
+     * 构造注册中心
+     * @param url 注册中心自身的url，包含初始化所需的参数
+     */
     public AbstractRegistry(URL url) {
         setUrl(url);
         // Start file save timer
@@ -91,6 +95,7 @@ public abstract class AbstractRegistry implements Registry {
         }
         this.file = file;
         loadProperties();
+        // TODO 什么情况下会用到？通知订阅了注册中心url的listener
         notify(url.getBackupUrls());
     }
 
